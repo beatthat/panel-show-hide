@@ -1,0 +1,68 @@
+{
+  "name": "panel-show-hide",
+  "scope": "beatthat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -f *.tgz package-lock.json && cd test && npm run clean",
+    "template-update": "node scripts/template-update.js",
+    "pretest-install": "rm -f *.tgz",
+    "test-install": "npm pack && cp ${npm_package_name}-${npm_package_version}.tgz ${npm_package_name}-latest.tgz && cd test && npm run clean && npm install",
+    "test-cp2src": "cd test && node scripts/cp2src.js",
+    "test-overwrite2src": "cd test && node scripts/overwrite2src.js",
+    "docs-generate": "node scripts/docs-generate.js",
+    "version": "git add -A",
+    "postinstall": "node scripts/postinstall.js",
+    "postversion": "git push && git push --tags && npm run clean",
+    "//": {
+      "clean": "deletes all non source files, products of tests etc",
+      "template-update": "pulls the latest version of the https://github.com/beatthat/unpm-unity-package-template.git and syncs changes to this package",
+      "test-install": "installs the 'test' package, which can be used for development",
+      "test-cp2src": "copies changes from 'test' package back to package src but does NOT delete removed files",
+      "test-overwrite2src": "copies changes from 'test' package back to src. Deletes src before the copy, so effectively whatever is in test becomes the src",
+      "npm version [patch|minor|major]": "after everything commited, use npm version to push a tagged release with bumped version"
+    },
+    "overwrite2clone": "./node_modules/.bin/overwrite2clone"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beatthat/panel-show-hide.git"
+  },
+  "keywords": [],
+  "author": "Larry Kirschner <larrykirschner@gmail.com> (https://ict.usc.edu/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beatthat/panel-show-hide/issues"
+  },
+  "homepage": "https://github.com/beatthat/panel-show-hide#readme",
+  "files": [
+    "index.js",
+    "scripts",
+    "src",
+    "Runtime",
+    "Samples",
+    "README.md",
+    "readmefiles"
+  ],
+  "dependencies": {
+    "animator-templates": "github:beatthat/animator-templates#semver:^1.1.1",
+    "bindings": "github:beatthat/bindings#semver:^1.0.3",
+    "collections-ext": "github:beatthat/collections-ext#semver:^1.2.0",
+    "controllers": "github:beatthat/controllers#semver:^1.0.7",
+    "get-components-ext": "github:beatthat/get-components-ext#semver:^1.0.5",
+    "panel-controllers": "github:beatthat/panel-controllers#semver:^1.0.0",
+    "path": "^0.12.7",
+    "property-bindings": "github:beatthat/property-bindings#semver:^1.2.2",
+    "property-interfaces": "github:beatthat/property-interfaces#semver:^1.1.1",
+    "safe-refs": "github:beatthat/safe-refs#semver:^1.0.9",
+    "state-controller-properties": "github:beatthat/state-controller-properties#semver:^1.0.3",
+    "state-controller-syncers": "github:beatthat/state-controller-syncers#semver:^1.0.0",
+    "state-controllers": "github:beatthat/state-controllers#semver:^1.0.3",
+    "transform-path-ext": "github:beatthat/transform-path-ext#semver:^1.0.5",
+    "transitions": "github:beatthat/transitions#semver:^1.0.1",
+    "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
+  },
+  "devDependencies": {}
+}
