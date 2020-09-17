@@ -308,8 +308,10 @@ namespace BeatThat.ShowHidePanels
 				
 			override public string ToString()
 			{
-				return "[" + GetType() + " owner=" + this.owner + " running=" + this.isTransitionRunning 
-					+ ", complete=" + this.isTransitionComplete + "]";
+				return "[" + GetType()
+					+ " owner=" + this.owner
+					+ " status=" + this.status
+					+ "]";
 			}
 
 			protected ShowHidePanel owner { get { return m_owner.value; } }
